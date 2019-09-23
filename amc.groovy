@@ -194,7 +194,7 @@ def extract(f) {
 	}
 
 //	def folder = new File(extractFolder ?: f.dir, f.nameWithoutExtension)
-	def folder = new File(extractFolder ?: f.dir.name)
+	def folder = new File(extractFolder ?: f.dir.toString())
 //	def files = extract(file: f, output: folder.resolve(f.dir.name), conflict: 'auto', filter: { it.isArchive() || it.isVideo() || it.isSubtitle() || (music && it.isAudio()) }, forceExtractAll: true) ?: []
 	def files = extract(file: f, output: folder, conflict: 'auto', filter: { it.isArchive() || it.isVideo() || it.isSubtitle() || (music && it.isAudio()) }, forceExtractAll: true) ?: []
 
@@ -350,6 +350,7 @@ def group(files) {
 
 
 // group episodes / movies
+log.fine(input.toString())
 def groups = group(input)
 
 // log movie/series/anime detection results
